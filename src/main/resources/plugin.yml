@@ -1,0 +1,16 @@
+name: NexusBridge
+version: ${version}
+main: com.nexusuniverse.bridge.NexusBridgePlugin
+api-version: '1.21'
+author: Nexus Universe
+description: Mission repository bridge between Paper and Kairos.
+commands:
+  nexusbridge:
+    description: NexusBridge and Kairos administration.
+    aliases: [bridge, kairos]
+    usage: /nexusbridge <status|ping|chat|repository|reload|flush|version|help>
+    permission: nexusbridge.admin
+permissions:
+  nexusbridge.admin:
+    description: Manage NexusBridge and communicate with Kairos.
+    default: op

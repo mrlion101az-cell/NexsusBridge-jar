@@ -1,0 +1,33 @@
+bridge:
+  enabled: true
+  base-url: "https://kairos-ai-server.onrender.com"
+  auth-token: "CHANGE_ME"
+  connect-timeout-ms: 10000
+  request-timeout-ms: 45000
+  queue-capacity: 100
+  failure-threshold: 2
+  circuit-open-ms: 60000
+  warning-cooldown-ms: 60000
+  log-payloads: false
+
+endpoints:
+  chat: "/chat"
+  repository: "/repository_event"
+
+# NexusBridge 3 does not register general world-event listeners.
+# Nothing from block interactions, combat, inventory movement, signs,
+# books, crafting, fishing, portals, sleeping, or advancements is shown
+# in Minecraft chat or sent to Kairos.
+repository:
+  enabled: true
+  remove-accepted-items: true
+  require-artifact-tag: false
+  artifact-key: "nexus_artifact"
+  accepted-name-fragments:
+    - "archive access badge"
+  locations:
+    fracture-main:
+      world: "nexsus"
+      x: -16647
+      y: 72
+      z: 9648

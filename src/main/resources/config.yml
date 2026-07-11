@@ -1,0 +1,70 @@
+bridge:
+  enabled: true
+  base-url: "https://kairos-ai-server.onrender.com"
+  auth-token: "CHANGE_ME"
+  connect-timeout-ms: 5000
+  request-timeout-ms: 15000
+  queue-capacity: 500
+  max-retries: 1
+  retry-base-delay-ms: 1000
+  failure-threshold: 3
+  circuit-open-ms: 30000
+  warning-cooldown-ms: 30000
+  log-payloads: false
+
+endpoints:
+  chat: "/chat"
+  repository: "/repository_event"
+  inventory: "/inventory_event"
+  npc: "/npc"
+  world-event: "/world_event"
+  player-kill: "/player_kill"
+  grief-block: "/grief_block"
+
+# Safe production defaults: only the mission-critical repository bridge is enabled.
+# Turn other systems on one at a time after their Render endpoints are confirmed.
+features:
+  repository: true
+  inventory-snapshots: false
+  npc-interactions: false
+  books: false
+  signs: false
+  regions: false
+  block-interactions: false
+  combat: false
+  advancements: false
+  crafting: false
+  fishing: false
+  portals: false
+  sleeping: false
+
+repository:
+  remove-accepted-items: true
+  require-artifact-tag: false
+  artifact-key: "nexus_artifact"
+  accepted-name-fragments:
+    - "archive access badge"
+  locations:
+    fracture-main:
+      world: "nexsus"
+      x: -16647
+      y: 72
+      z: 9648
+
+inventory:
+  snapshot-delay-ticks: 4
+  include-ender-chest: false
+  include-armor: true
+  include-offhand: true
+
+regions:
+  check-every-ticks: 20
+  definitions: {}
+
+npc:
+  citizens-metadata-key: "NPC"
+  include-scoreboard-tagged: true
+  scoreboard-tag: "nexus_npc"
+
+security:
+  redact-sensitive-config-in-status: true

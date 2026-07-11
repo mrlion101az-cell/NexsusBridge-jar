@@ -1,0 +1,15 @@
+name: NexusBridge
+version: ${version}
+main: com.nexusuniverse.bridge.NexusBridgePlugin
+api-version: '1.21'
+author: Nexus Universe
+description: Event bridge between Paper and Kairos/Render.
+commands:
+  nexusbridge:
+    description: NexusBridge administration.
+    usage: /nexusbridge <status|reload|test|flush>
+    permission: nexusbridge.admin
+permissions:
+  nexusbridge.admin:
+    description: Manage NexusBridge.
+    default: op

@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.nexusuniverse'
-version = '1.0.0'
+version = '1.0.1'
 
 def paperVersion = '1.21.11-R0.1-SNAPSHOT'
 

@@ -1,0 +1,30 @@
+name: Build NexusBridge
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
+      - name: Build clean release
+        run: gradle clean build --stacktrace
+      - name: Verify generated JAR
+        run: |
+          ls -lah build/libs
+          test -f build/libs/NexusBridge-2.0.0.jar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexusBridge-2.0.0
+          path: build/libs/NexusBridge-2.0.0.jar
+          if-no-files-found: error
